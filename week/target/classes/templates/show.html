@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <table border="1px">
+        <tr>
+            <td>姓名</td>
+            <td>省份</td>
+            <td>市</td>
+        </tr>
+        <tr th:each="u:${userList}">
+            <td th:text="${u.username}">姓名</td>
+            <td th:text="${u.province.pname}">省份</td>
+            <td th:text="${u.city.cname}">市</td>
+        </tr>
+    </table>
+</body>
+</html>

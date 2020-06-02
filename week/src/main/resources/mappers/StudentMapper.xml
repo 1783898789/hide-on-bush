@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jiyun.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="cn.jiyun.pojo.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="pid" jdbcType="INTEGER" property="pid" />
+        <result column="cid" jdbcType="INTEGER" property="cid" />
+        <association property="province" javaType="cn.jiyun.pojo.Province">
+            <result column="pname" property="pname"/>
+        </association>
+        <association property="city" javaType="cn.jiyun.pojo.City">
+            <result column="cname" property="cname"/>
+        </association>
+    </resultMap>
+    <select id="selectUserByPro" resultMap="BaseResultMap">
+       SELECT u.username,(p.pname)pname,(c.cname)cname FROM USER u,province p,city c WHERE u.pid=p.id AND u.cid=c.id
+    </select>
+</mapper>
